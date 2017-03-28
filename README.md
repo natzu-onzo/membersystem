@@ -5,6 +5,10 @@ KBHFF member system
 
 ## Installation
 
+### requiments
+php5, apache2, MySQL, php-mailer
+apache2
+  - a2enmod
 ### Clone the repo
 
 ```bash
