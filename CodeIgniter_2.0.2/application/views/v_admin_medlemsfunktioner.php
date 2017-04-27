@@ -20,7 +20,7 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span>
 		echo getMenu(site_url(), $this->session->userdata('permissions'), $this->session->userdata('uid')); 
 	?>
 <h1><?php echo $heading;?></h1>
-<h2><?= $divisionname ?></h2>
+<h2><?php= $divisionname ?></h2>
 
 	<form action="/admin/medlemmer/<?= $division ?>" name="search_in_members" method="post" class="fc_form"> 
 				<input name="name" type="text" value="<?php echo $name; ?>" class="memberform_input_field" />
