@@ -34,12 +34,12 @@ Medlemsnummer <?= $adress['uid']?><br>
 
 <?php if (count($permissions) > 0):?>
 <h3>Mine arbejdsroller:</h3>
-<? 
-/*
+<?php 
+
 echo("<!--\n");
 print_r($permissions);
 echo("-->\n");
-*/
+
 // Udskriv tildelte roller
 while (list($division, $values) = each($permissions)) { 
 	if (array_key_exists('afdelingsnavn', $permissions[$division]))
@@ -101,7 +101,7 @@ Der er pt. ingen udlevering af varer planlagt.<br>
 <a href="http://kbhff.wikispaces.com/Medlemssystem+guide" target="_new">Vejledning til medlemssystemet.</a><br>
 </td><td valign="top" class="mypagenews">
 <h2>Nyheder fra KBHFF<br><?= $divisioninfo['name']?></h2><hr class="mypagenewshr">
-<?
+<?php
 foreach ($newsletters as $newsletter)
 {
 	echo ('<a href="/minside/nyhedsbrev/'.$newsletter['uid'].'"><b>' . $newsletter['subject'].'</b><br>'.substr($newsletter['content'],0,160) . '[...] <i>l&aelig;s mere</i></a><br>Nyhed postet '.$newsletter['date'] . '<br><br>');
