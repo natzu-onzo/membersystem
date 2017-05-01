@@ -30,8 +30,8 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span><b
 // echo ('-->');
 
 	?>
-<h3>Registrering af kontantordrer, <?= $divisionname ?></h3>
-<?
+<h3>Registrering af kontantordrer, <?php $divisionname ?></h3>
+<?php
 if ($message > '')
 {
 	echo ('<div id="message">' . $message . $kvitol . '</div>');
@@ -44,12 +44,12 @@ if ($errors > '')
 ?>
 <?php if (is_array($pickups)):?>
 
-	<form action="/kontantordrer<? echo ('/index/' . $division); ?>" name="search_in_members" method="post" class="fc_form"> 
+	<form action="/kontantordrer<?php echo ('/index/' . $division); ?>" name="search_in_members" method="post" class="fc_form"> 
 				<input name="name" type="text" value="<?php echo $name; ?>" class="memberform_input_field" />
 				<input type="submit" value="Søg medlem"  class="form_button"/>
 	</form>
 
-	<form action="/kontantordrer<? echo ('/index/' . $division) . '/ordre/1'; ?>" name="memberform" onSubmit="return checkdata()" method="post" id="memberform">
+	<form action="/kontantordrer<?php echo ('/index/' . $division) . '/ordre/1'; ?>" name="memberform" onSubmit="return checkdata()" method="post" id="memberform">
 	<input type="hidden" name="timestamp" value="<?php echo time(); ?>">
 	<input type="hidden" name="division" value="<?php echo $division; ?>">
 <?php 

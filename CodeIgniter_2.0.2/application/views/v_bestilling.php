@@ -72,7 +72,7 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span>
 
 <tr class="picuplist"><td><?= $item['name'];?></td><td><?= $item['pickupdate'];?></td><td><?= $item['explained'];?></td>
 <td class="rjustify"><input type="hidden" name="item[]" value="<?= $item['id'] ?>"><input type="hidden" name="pickupdate[]" value="<?= $item['uid'] ?>"><input type="hidden" class="itamount" name="itemamount[]" value="<?= $item['amount'];?>"><?= $item['amount'];?></td>
-<td class="rjustify inorder"><? 
+<td class="rjustify inorder"><?php 
 if ($item['cancel'] <0 ) { 
 	echo '&nbsp;</td><td><input type="hidden" name="quant[]" value="0"><span class="disabled">' . $item['quant'] . '</span></td><td><img src="/images/exclamation.png" alt="For sent at &aelig;ndre" width="15" height="15" border="0" align="right"></td>';
 	} else {

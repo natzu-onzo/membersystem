@@ -44,15 +44,20 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span>
 ?>
 <?php echo $content;?>
 Hent Excel-liste over medlemmer:<br>
-<?php= $excelsel ?>
+<?php echo $excelsel ?>
 <br>
 Registrer kontant-ordrer:<br>
-<?php= $cashsel ?>
+<?php echo $cashsel ?>
 <br>
+
+<!--
+<?php echo($createsel); ?>
+-->
+    
 Se afhentningsdage:<br>
 <form action="/admin/liste/" method="post">
 Afdeling: <select name="division">
-<?php= $createsel ?>
+<?php echo $createsel ?>
 </select>
 <input type="submit" value="Vis liste" class="form_button"><br>
 </form>
@@ -60,7 +65,7 @@ Afdeling: <select name="division">
 Opret afhentningsdag:<br>
 <form action="/admin/opret/" method="post">
 Afdeling: <select name="division">
-<?php= $createsel ?>
+<?php echo $createsel ?>
 </select>
 Dag: <input type="text" name="dato" id="dato" size="10" maxlength="10"> Sidste ordre: <input type="text" name="dato2" id="dato2" size="10" maxlength="10"> <input type="text" name="tid2" id="tid2" value="18:30" size="5" maxlength="5">
 <input type="submit" value="Opret" class="form_button"><br>
@@ -84,12 +89,12 @@ Dag: <input type="text" name="dato" id="dato" size="10" maxlength="10"> Sidste o
 ?>
 <br>
 Dagens salg:<br>
-<?php= $dagenssalg ?>
+<?php echo $dagenssalg ?>
 <br>
 Mail til nye medlemmer:<br>
 <form action="/admin/nyemedlemmer/" method="post">
 Afdeling: <select name="division"><option value="0">Alle afdelinger</a>
-<?php= $createsel ?>
+<?php echo $createsel ?>
 </select>
 siden: <input type="text" name="dato" id="dato4" size="10" maxlength="10">&nbsp;<input type="submit" value="Vis" class="form_button"><br>
 </form>
@@ -102,13 +107,13 @@ Statistik over ikke-afhentede poser:<br>
 Rediger medlemmer<br>
 <form action="/admin/medlemmer/" method="post">
 Afdeling: <select name="division">
-<?php= $createsel ?>
+<?php echo $createsel ?>
 </select>
 <input type="submit" value="Rediger" class="form_button"><br>
 </form>
 <br>
 Rediger tekst i brev til nye medlemmer:<br>
-<?php= $welcome ?>
+<?php echo $welcome ?>
 <br>
 
 <!--

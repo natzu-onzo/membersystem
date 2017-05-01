@@ -32,7 +32,7 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span>
 		
 	<fieldset>
 	<legend>Medlemsliste</legend>
-	<form action="/medlemmer<? echo ('/index/' . $division); ?>" name="search_in_members" method="post" class="fc_form"> 
+	<form action="/medlemmer<?php echo ('/index/' . $division); ?>" name="search_in_members" method="post" class="fc_form"> 
 	<br />
 		<div id="message">
 				<?php if (isset ($message)) echo $message; ?>
@@ -52,7 +52,7 @@ F&Oslash;DEVAREF&AElig;LLESSKAB <span id="green">/ MEDLEMSSYSTEM</span></span>
 
 	<br />
 
-	<form action="/medlemmer<? echo ('/index/' . $division); ?>" name="members" method="post" id="memberform">
+	<form action="/medlemmer<?php echo ('/index/' . $division); ?>" name="members" method="post" id="memberform">
 	<input type="hidden" name="timestamp" value="<?php echo time(); ?>">
 
 	<table class="posts">
