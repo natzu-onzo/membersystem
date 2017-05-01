@@ -1,5 +1,5 @@
-<? # $Id: error_hidden.php 131 2010-04-16 10:33:55Z torsten $ ?>
-<?
+<?php # $Id: error_hidden.php 131 2010-04-16 10:33:55Z torsten $ ?>
+<?php
 // Date in the past
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
@@ -16,7 +16,7 @@ header("Pragma: no-cache");
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 
 <html>
-<?
+<?php
 	include("../../ressources/.mysql_common.php");
 	include("../../ressources/.library.php");
 	include("../../ressources/.kvittering.php");
@@ -27,7 +27,7 @@ header("Pragma: no-cache");
 		<title>Error Hidden</title>
 </head>
 <body>
-<?
+<?php
 
 $today = strftime("%Y-%m-%d", time());
 
@@ -87,12 +87,3 @@ sendreceipt();
 </body>
 </html>
 
-<?
-
-
-
-
-
-
-
-?>

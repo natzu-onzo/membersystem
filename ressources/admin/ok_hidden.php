@@ -1,5 +1,5 @@
-<? # $Id: ok_hidden.php 180 2011-01-25 14:38:06Z torsten $ ?>
-<?
+<?php # $Id: ok_hidden.php 180 2011-01-25 14:38:06Z torsten $ ?>
+<?php
 // Date in the past
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
 
@@ -13,7 +13,7 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 // HTTP/1.0
 header("Pragma: no-cache");
 ?>
-<?
+<?php
 	include("../../ressources/.mysql_common.php");
 	include("../../ressources/.library.php");
 	include("../../ressources/.kvittering.php");
@@ -29,7 +29,7 @@ header("Pragma: no-cache");
 
 <html>
 
-<?
+<?php
 $today = strftime("%Y-%m-%d", time());
 
 //GET /ressources/admin/ok_hidden.php?transact=19194924&OrderID=108&CardType=Visa%2Fdankort&Attempts=1&AttemptsFromIPToday=1&Cardnumber=XXXXXXXXXXXX0121 
@@ -56,7 +56,7 @@ setpaid($OrderID);
 </html>
 
 
-<?
+<?php
 
 
 

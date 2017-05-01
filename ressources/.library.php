@@ -1,4 +1,4 @@
-<? #$Id: .persons_common.php 88 2010-02-09 12:30:48Z torsten $
+<?php #$Id: .persons_common.php 88 2010-02-09 12:30:48Z torsten $
 
 function sendreceipt($emailkvittering, $OrderID, $email, $firstname, $middlename, $lastname)
 {

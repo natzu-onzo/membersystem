@@ -1,5 +1,5 @@
 <?php
-  require('global_config.php');
+require_once('global_config.php');
 
 /*
  *---------------------------------------------------------------
@@ -19,7 +19,7 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'production');
+	define('ENVIRONMENT', 'development');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING

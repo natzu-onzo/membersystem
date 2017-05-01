@@ -1,4 +1,4 @@
-<?  #$Id: .kvittering.php 101 2010-03-19 09:32:20Z torsten $
+<?php  #$Id: .kvittering.php 101 2010-03-19 09:32:20Z torsten $
 
 function kvitgetorderhead($OrderID, $orderkeycheck, $transact, $Cardnumber = '')
 {
