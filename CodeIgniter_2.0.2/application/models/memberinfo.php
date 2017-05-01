@@ -151,7 +151,7 @@ ORDER BY `ff_pickupdates`.`pickupdate`,ff_producttypes.explained ');
 		$row = $query->row();
     
     // Validate login
-    if($query->num_rows() === 1 && $this->phpass->check($pw, $row->password) && $timestamp > mysql_to_unix($row->last_login))
+        if($query->num_rows() === 1 && $this->phpass->check($pw, $row->password) /*&& $timestamp > mysql_to_unix($row->last_login)*/)
 		{
 			if ($row->active == 'yes')
 			{
