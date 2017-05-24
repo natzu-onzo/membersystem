@@ -14,6 +14,7 @@ class Admin extends CI_Controller {
 		$this->load->model('Permission');
 		$this->load->model('Memberinfo');
 		$this->load->model('Personsmodel');
+        $this->load->model('Lossalg');
     }
 
     function index() {
@@ -32,6 +33,7 @@ class Admin extends CI_Controller {
 		$dagenssalg = '';
 		$nyemedlemmer = '';
 		$welcome = '';
+        $varetyper = '';
 		$this->db->select('divisions.name, divisions.uid');
 		$this->db->from('divisions');
 		$this->db->where('type','aktiv');
@@ -67,6 +69,18 @@ class Admin extends CI_Controller {
 		$bagdays = $q2->result_array();
 		$content = '';
 
+
+        $this->db->select('id, explained');
+		$this->db->from('producttypes');
+        $query = $this->db->get();
+
+        $explained = '';
+        foreach ($query->result_array() as $row)
+        {
+            $explained .= '<option value="' . $row['id'] . '">' . $row['explained'] . "</option>\n";
+        }
+
+        
 		$data = array(
                'title' => 'KBHFF Administrationsside',
                'heading' => 'KBHFF Administrationsside',
@@ -80,8 +94,11 @@ class Admin extends CI_Controller {
 			   'nyemedlemmer' => $nyemedlemmer,
 			   'welcome' => $welcome,
 			   'bagdays' => $bagdays,
-          );
+               'varetyper' => $explained,
+        );
 
+ 
+        
 		$this->load->view('v_admin', $data);
     }
 
@@ -178,6 +195,63 @@ class Admin extends CI_Controller {
     }
 
 
+    function opret_lossalg_type() {
+		if (! intval($this->session->userdata('uid')) > 0)
+			redirect('/login');
+        
+        // insert new item type to table 'producttypes'
+        $itemtype = $this->input->post('itemtype');
+        if ($itemtype === "") {
+            $this->index();
+        }
+        else {
+            $sql = 'INSERT INTO ' . $this->db->protect_identifiers('producttypes', TRUE) . ' (id, explained, bag) VALUES (' . $this->db->insert_id() . ',' .  $this->db->escape($itemtype)  . ', "Y")';
+            $this->db->query($sql);
+
+            // get the id of the newly added item type
+            $query = $this->db->query('select id from ff_producttypes where explained =' . $this->db->escape($itemtype) .' ;');
+            $type_id = $query->row()->id;
+
+            // Add each detail to table 'product_details
+            $details = $this->input->post('detaljer');
+            foreach ($details as $detail)
+            {
+                $this->db->trans_start();
+                $sql = 'INSERT INTO ' . $this->db->protect_identifiers('product_details', TRUE) . ' (detail_id, id, detail_name) VALUES (' . $this->db->insert_id() . ',' . $type_id . ',' . $this->db->escape($detail) .')';
+                $this->db->query($sql);
+                $this->db->trans_complete();
+            }
+        
+            $this->index();
+        }
+    }
+
+    function opret_lossalg_vare() {
+
+    }
+
+    function hent_lossalg_detaljer() {
+        $type_id = $this->input->post('id');    
+        $details = $this->Lossalg->get_type_details($type_id);
+        echo json_encode($details->result_array());
+    }
+
+    function slet_lossalg_type() {
+
+    }
+
+    function slet_lossalg_vare() {
+
+    }
+
+    function rediger_lossalg_type() {
+
+    }
+
+    function rediger_lossalg_vare() {
+
+    }
+    
     function opretf() {
 		if (! intval($this->session->userdata('uid')) > 0)
 			redirect('/login');

@@ -12866,6 +12866,21 @@ CREATE TABLE IF NOT EXISTS `ff_pickupdates` (
 
 -- --------------------------------------------------------
 
+CREATE TABLE IF NOT EXISTS `ff_product_details` (
+  `detail_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` mediumint(9) unsigned NOT NULL,
+  `detail_name` varchar(40),
+  PRIMARY KEY (detail_id),
+  FOREIGN KEY (id) REFERENCES ff_producttypes (id)
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=1 ;
+
+
+CREATE TABLE IF NOT EXISTS `ff_products` (
+  `product_id` int unsigned NOT NULL AUTO_INCREMENT,
+  `id` mediumint(9) unsigned NOT NULL,
+  `description` TEXT
+) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=1 ;
+
 --
 -- Table structure for table `ff_producttypes`
 --
