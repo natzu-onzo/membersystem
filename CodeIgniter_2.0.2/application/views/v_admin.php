@@ -63,6 +63,7 @@ function addDetailField(divName) {
             $.post('admin/hent_lossalg_detaljer', {id: select.options[select.selectedIndex].value},
                    function(response) {
                        removeDetailValueFields('detailValue');
+                       console.log(response);
                        var response = JSON.parse(response);
                        for (i = (response.length - 1); i >= 0 ; i--) {
                            var detailName = response[i].detail_name;

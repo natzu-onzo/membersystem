@@ -14,7 +14,6 @@ class Admin extends CI_Controller {
 		$this->load->model('Permission');
 		$this->load->model('Memberinfo');
 		$this->load->model('Personsmodel');
-        $this->load->model('Lossalg');
     }
 
     function index() {
@@ -231,9 +230,9 @@ class Admin extends CI_Controller {
     }
 
     function hent_lossalg_detaljer() {
-        $type_id = $this->input->post('id');    
+        $type_id =$this->input->post('id');    
         $details = $this->Lossalg->get_type_details($type_id);
-        echo json_encode($details->result_array());
+        echo json_encode($query->result_array());
     }
 
     function slet_lossalg_type() {
