@@ -16,4 +16,9 @@ class Lossalg extends CI_Model {
         $query = $this->db->get('product_details');
         return $query;
     }
+
+    function add_new_product() {
+
+    }
+
 }

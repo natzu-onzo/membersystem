@@ -28,55 +28,9 @@ $(function() {
 });
 </script>
 
+<script type="text/javascript" src="/ressources/dynamicTextFields.js"></script>
 
-<script  language="JavaScript" type="text/javascript">
 
-var fieldCounter = 0;
-function addDetailField(divName) {
-    var newDiv = document.createElement('div');
-    newDiv.innerHTML = "Detalje " + (fieldCounter + 1) + " <br><input type='text' name='detaljer[]' id='detail" + fieldCounter + "'>";
-    //    newDiv.innerHTML = "Detalje " + (fieldCounter + 1) + " <br><input type='text' name='detalje" + fieldCounter + "' id='detail" + fieldCounter + "'>";
-    document.getElementById(divName).appendChild(newDiv);
-    fieldCounter++;
-}
-</script>
-
-<script  language="JavaScript" type="text/javascript">
-    function addDetailValueField(divName, detailName) {
-        var newDiv = document.createElement('div');
-        newDiv.innerHTML = detailName + ": <br><input type='text' name='detailValue[]' >";
-        document.getElementById(divName).appendChild(newDiv);
-                           
-    }
-    // clears all added value fields
-    function removeDetailValueFields(divName) {
-        var node = document.getElementById(divName);
-        while (node.hasChildNodes()) {
-            node.removeChild(node.lastChild);
-        }
-    }
-    
-    window.onload = function() {
-        select = document.getElementById('type_select');
-        select.onchange = function() {
-            var id = select.options[select.selectedIndex].value;
-            $.post('admin/hent_lossalg_detaljer', {id: select.options[select.selectedIndex].value},
-                   function(response) {
-                       removeDetailValueFields('detailValue');
-                       console.log(response);
-                       var response = JSON.parse(response);
-                       for (i = (response.length - 1); i >= 0 ; i--) {
-                           var detailName = response[i].detail_name;
-                           addDetailValueField('detailValue', detailName);
-                           console.log(response[i].detail_name);
-                       }
-                   }
-            );
-        }
-    }
-
-</script>
-    
 
 <link rel="shortcut icon" href="/images/favicon.ico" />
 </head>
@@ -249,7 +203,10 @@ Statistik over ikke-afhentede poser:<br>
 <?php echo isset($script_head) ? $script_head : ''; ?>
 <?php echo isset($script_foot) ? $script_foot : ''; ?>
 
-<script src="/ressources/tabs.js"></script>
+
+
+                                                        
+ <script src="/ressources/tabs.js"></script>
 <script>
     var myTabs = tabs({
     el: '#tabs',
