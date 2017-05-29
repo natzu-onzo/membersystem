@@ -68,18 +68,7 @@ class Admin extends CI_Controller {
 		$q2 = $this->db->query('select id, explained from ff_producttypes where bag = "Y" and id != ' . FF_GROCERYBAG);
 		$bagdays = $q2->result_array();
 		$content = '';
-
-
-        $this->db->select('id, explained');
-		$this->db->from('producttypes');
-        $query = $this->db->get();
-
-        $explained = '';
-        foreach ($query->result_array() as $row)
-        {
-            $explained .= '<option value="' . $row['id'] . '">' . $row['explained'] . "</option>\n";
-        }
-
+        $types = $this->Lossalg->get_types()->result_array();
         
 		$data = array(
                'title' => 'KBHFF Administrationsside',
@@ -94,7 +83,7 @@ class Admin extends CI_Controller {
 			   'nyemedlemmer' => $nyemedlemmer,
 			   'welcome' => $welcome,
 			   'bagdays' => $bagdays,
-               'varetyper' => $explained,
+               'varetyper' => $types,
         );
 
  
@@ -227,7 +216,28 @@ class Admin extends CI_Controller {
     }
 
     function opret_lossalg_vare() {
+        $detailValues = $this->input->post('detailValue');
+        $type_id = $this->input->post('lossalgvare');
+        
+        $details = ($this->Lossalg->get_type_details($type_id));
+        $details = $details->result_array();
+        $details = array_reverse($details);
 
+        $arr = array();
+
+
+        for ($i = 0; $i < sizeof($detailValues); $i++) {
+            /*  echo $details[$i]['detail_name'];
+            echo "\n";
+            echo $detailValues[$i]; */
+            $arr[$details[$i]['detail_name']] = $detailValues[$i];
+
+
+            }
+        $details_json = json_encode($arr);
+        $this->Lossalg->add_new_product($type_id, $details_json);
+        $this->index();
+        
     }
 
     function hent_lossalg_detaljer() {
@@ -235,6 +245,7 @@ class Admin extends CI_Controller {
         $details = $this->Lossalg->get_type_details($type_id);
         echo json_encode($details->result_array());
     }
+
 
     function slet_lossalg_type() {
 

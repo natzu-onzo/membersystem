@@ -12879,6 +12879,7 @@ CREATE TABLE IF NOT EXISTS `ff_products` (
   `product_id` int unsigned NOT NULL AUTO_INCREMENT,
   `id` mediumint(9) unsigned NOT NULL,
   `description` TEXT,
+  `active` CHAR(1) NOT NULL DEFAULT 'Y',
   PRIMARY KEY (product_id),
   FOREIGN KEY (id) REFERENCES ff_producttypes (id)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_danish_ci AUTO_INCREMENT=1 ;

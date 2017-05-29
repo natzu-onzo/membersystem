@@ -162,17 +162,22 @@ Opret ny varetype: <br>
 Tilføj løssalgvarer: <br>
 <?php
 	{
-		echo '<form action="/admin/opret_lossalg_vare  method="post">' ."\n";
-		echo '</select> <br><br>'."\n";
+		echo '<form action="/admin/opret_lossalg_vare"  method="post">' ."\n";
+        
         echo 'Vælg varetype:'."\n";
         echo '<select id="type_select" name="lossalgvare">' ."\n";
-        echo $varetyper;
+        foreach ($varetyper as $row)
+        {
+            echo '<option value="' . $row['id'] . '">' . $row['explained'] . "</option>\n";
+        }
         echo '</select> <br><br>'."\n";
-        echo '<div id="detailValue"></div>';
-		echo '<input type="submit" value="Opret ny vare" class="form_button"><br>' ."\n";
-		echo '</form>' ."\n";
-		echo '<br>' ."\n";
-	
+
+        echo '<div id="detailValues"></div>';
+
+        echo '<input type="submit" value="Opret ny vare" class="form_button"><br>' ."\n";
+
+        echo '</form>' ."\n";
+		
 	
 	}
 ?>
